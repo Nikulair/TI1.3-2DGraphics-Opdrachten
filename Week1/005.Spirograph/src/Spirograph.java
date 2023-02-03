@@ -24,6 +24,7 @@ public class Spirograph extends Application {
     private TextField v4;
     private Button reset;
     private Button draww;
+    private float colour = 0;
     private boolean translated = false;
 
     @Override
@@ -58,7 +59,8 @@ public class Spirograph extends Application {
             fxGraphics2D.fillRect(-20000, -20000, 40000, 40000);
         });
         draww.setOnAction(e -> {
-            draw(fxGraphics2D);
+            draw(fxGraphics2D, Color.getHSBColor(colour, 1f, 1f));
+            colour+=.2f;
         });
 
 
@@ -69,7 +71,7 @@ public class Spirograph extends Application {
     }
 
 
-    public void draw(FXGraphics2D graphics) {
+    public void draw(FXGraphics2D graphics, Color color) {
         //you can use Double.parseDouble(v1.getText()) to get a double value from the first textfield
         //feel free to add more textfields or other controls if needed, but beware that swing components might clash in naming
         if (!translated) {
@@ -86,8 +88,7 @@ public class Spirograph extends Application {
         double x2 = (a * Math.cos(b * 0)) + (c * Math.cos(d * 0));
         double y2 = (a * Math.sin(b * 0)) + (c * Math.sin(d * 0));
         for (double i = 0; i < Math.PI * 2; i += Math.PI / 2000) {
-            graphics.setColor(Color.getHSBColor((float) i, 1f, 1f)
-            );
+            graphics.setColor(color);
             double x21 = (a * Math.cos(b * i)) + (c * Math.cos(d * i));
             double y21 = (a * Math.sin(b * i)) + (c * Math.sin(d * i));
             x1 = x21;
