@@ -66,11 +66,12 @@ public class YingYang extends Application {
         yingYangSide.subtract(new Area(new Ellipse2D.Double(.4375*scale,.1875*scale,.125*scale,.125*scale)));
 
 
-        graphics.draw(yingYangSide);
+
         graphics.setColor(Color.white);
         graphics.fill(yingYangSide);
-        graphics.rotate(Math.toRadians(180), scale/2,scale/2);
         graphics.setColor(Color.black);
+        graphics.draw(yingYangSide);
+        graphics.rotate(Math.toRadians(180), scale/2,scale/2);
         graphics.draw(yingYangSide);
         graphics.fill(yingYangSide);
 

@@ -22,7 +22,8 @@ public class Spiral extends Application {
     
     public void draw(FXGraphics2D graphics) {
         graphics.translate(960/2, 540/2);
-        graphics.scale(5,5);
+//        graphics.scale(5,5);
+        graphics.scale(2,2);
         double x = 0;
         double y = 0;
         for (double i = 0; i < Math.PI*70; i+=Math.PI/40000) {
