@@ -81,12 +81,15 @@ public class Spirograph extends Application {
         }
 
         double x1, y1;
+
         double a = Double.parseDouble(v1.getText());
         double b = Double.parseDouble(v2.getText());
         double c = Double.parseDouble(v3.getText());
         double d = Double.parseDouble(v4.getText());
+
         double x2 = (a * Math.cos(b * 0)) + (c * Math.cos(d * 0));
         double y2 = (a * Math.sin(b * 0)) + (c * Math.sin(d * 0));
+
         for (double i = 0; i < Math.PI * 2; i += Math.PI / 2000) {
             graphics.setColor(color);
             double x21 = (a * Math.cos(b * i)) + (c * Math.cos(d * i));

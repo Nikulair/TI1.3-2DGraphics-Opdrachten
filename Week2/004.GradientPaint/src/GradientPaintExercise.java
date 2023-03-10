@@ -35,15 +35,27 @@ public class GradientPaintExercise extends Application {
         graphics.setBackground(Color.white);
         graphics.clearRect(0, 0, (int) canvas.getWidth(), (int) canvas.getHeight());
 
-        float[] fractions = {0f, 1/3f, 2/3f};
-        Color[] colors = {Color.MAGENTA, Color.black, Color.green};
+        float[] fractions = {
+                0f,
+                3/6f,
+                2/3f};
+        Color[] colors = {
+//                Color.MAGENTA,
+                new Color(.5f,0f,.5f),
+//                Color.black,
+                new Color(.05f,.05f,.05f),
+                Color.green};
 
         Paint paint = new RadialGradientPaint(
-                (float) x,
-                (float) y,
-                250f,
+//                (float) x,
+//                (float) y,
                 (float) canvas.getWidth() / 2,
                 (float) canvas.getHeight() / 2,
+                250f,
+//                (float) canvas.getWidth() / 2,
+//                (float) canvas.getHeight() / 2,
+                (float) x,
+                (float) y,
                 fractions,
                 colors,
                 MultipleGradientPaint.CycleMethod.REFLECT

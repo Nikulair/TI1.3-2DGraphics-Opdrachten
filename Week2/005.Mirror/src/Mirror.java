@@ -33,6 +33,9 @@ public class Mirror extends Application {
         graphics.setTransform(new AffineTransform());
         graphics.setBackground(Color.white);
         graphics.clearRect(0, 0, (int) canvas.getWidth(), (int) canvas.getHeight());
+
+        graphics.draw(new Line2D.Double(0,0,10,10));
+
     }
 
 

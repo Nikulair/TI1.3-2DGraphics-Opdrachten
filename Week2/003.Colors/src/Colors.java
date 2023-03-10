@@ -23,6 +23,9 @@ public class Colors extends Application {
         draw(new FXGraphics2D(canvas.getGraphicsContext2D()));
         primaryStage.setScene(new Scene(mainPane));
         primaryStage.setTitle("Colors");
+        primaryStage.setResizable(false);
+        primaryStage.setWidth(1000);
+        primaryStage.setHeight(canvas.getWidth()/6);
         primaryStage.show();
     }
 
