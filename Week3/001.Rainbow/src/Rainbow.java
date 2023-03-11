@@ -44,10 +44,10 @@ public class Rainbow extends Application {
             affineTransform.translate(canvas.getWidth() / 2, canvas.getHeight() / 2);
             Shape shape = font.createGlyphVector(graphics.getFontRenderContext(), str.substring(i, i + 1)).getOutline();
 
-            double graden = -90 + (180 * (i / (str.length()-1.0)));
+            double graden = -90 + (180 * (i / (str.length() - 1.0)));
 
             affineTransform.rotate(Math.toRadians(graden));
-            affineTransform.translate(-shape.getBounds().getWidth()/2, -100);
+            affineTransform.translate(-shape.getBounds().getWidth() / 2, -100);
 
             graphics.setColor(Color.black);
             graphics.draw(affineTransform.createTransformedShape(shape));
@@ -56,6 +56,7 @@ public class Rainbow extends Application {
             colour += (1f / str.length());
         }
     }
+
     public static void main(String[] args) {
         launch(Rainbow.class);
     }
