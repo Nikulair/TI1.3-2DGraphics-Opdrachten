@@ -74,7 +74,7 @@ public class FadingImage extends Application {
 
     public void init() {
         try {
-            images = new BufferedImage[4];
+            images = new BufferedImage[9];
             for (int i = 0; i < images.length; i++) {
                 images[i] = ImageIO.read(getClass().getResource("/images/image" + i + ".jpg"));
             }
