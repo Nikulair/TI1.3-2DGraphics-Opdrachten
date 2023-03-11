@@ -36,9 +36,9 @@ public class Rainbow extends Application {
         graphics.clearRect(0, 0, (int) canvas.getWidth(), (int) canvas.getHeight());
 
         Font font = new Font("Arial", Font.PLAIN, 100);
-        String str = "Sterf aan tering";
+        String str = "Regenboog";
         float colour = 0;
-        
+
         for (int i = 0; i < str.length(); i++) {
             AffineTransform affineTransform = new AffineTransform();
             affineTransform.translate(canvas.getWidth() / 2, canvas.getHeight() / 2);
