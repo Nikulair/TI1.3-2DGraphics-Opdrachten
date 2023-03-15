@@ -36,18 +36,18 @@ public class Rainbow extends Application {
         graphics.clearRect(0, 0, (int) canvas.getWidth(), (int) canvas.getHeight());
 
         Font font = new Font("Arial", Font.PLAIN, 100);
-        String str = "Regenboog";
+        String str = "Regenboog voor dummies";
         float colour = 0;
 
         for (int i = 0; i < str.length(); i++) {
             AffineTransform affineTransform = new AffineTransform();
-            affineTransform.translate(canvas.getWidth() / 2, canvas.getHeight() / 2);
+            affineTransform.translate(canvas.getWidth() / 2, canvas.getHeight() / 1.2);
             Shape shape = font.createGlyphVector(graphics.getFontRenderContext(), str.substring(i, i + 1)).getOutline();
 
             double graden = -90 + (180 * (i / (str.length() - 1.0)));
 
             affineTransform.rotate(Math.toRadians(graden));
-            affineTransform.translate(-shape.getBounds().getWidth() / 2, -100);
+            affineTransform.translate(-shape.getBounds().getWidth() / 2, -canvas.getHeight()/1.8);
 
             graphics.setColor(Color.black);
             graphics.draw(affineTransform.createTransformedShape(shape));
