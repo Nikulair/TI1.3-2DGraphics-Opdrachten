@@ -24,6 +24,7 @@ public class FadingImage extends Application {
     private BufferedImage[] images;
 
     private int currentImage = 0;
+    private int timer = 0;
 
     private float blendingProcess = 0f;
 
@@ -60,14 +61,19 @@ public class FadingImage extends Application {
         graphics.clearRect(0, 0, (int) canvas.getWidth(), (int) canvas.getHeight());
 
         AffineTransform tx = new AffineTransform();
+
+        graphics.drawImage(images[currentImage], tx, null);
+
+        graphics.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, blendingProcess));
+
         if (currentImage == 0) {
             graphics.drawImage(images[images.length - 1], tx, null);
         } else {
             graphics.drawImage(images[currentImage - 1], tx, null);
         }
 
-        graphics.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, blendingProcess));
-        graphics.drawImage(images[currentImage], tx, null);
+
+
         stage.setWidth(images[currentImage].getWidth());
         stage.setHeight(images[currentImage].getHeight());
     }
@@ -85,13 +91,18 @@ public class FadingImage extends Application {
     }
 
     public void update(double deltaTime) {
-            blendingProcess += 0.006f;
-            if (blendingProcess > 1f) {
+            blendingProcess -= 0.006f;
+            if (blendingProcess <= 0f) {
                 blendingProcess = 0;
-                currentImage++;
-                if (currentImage == images.length) {
-                    currentImage = 0;
+                if (timer > 400) {
+                    blendingProcess = .8f;
+                    currentImage++;
+                    if (currentImage == images.length) {
+                        currentImage = 0;
+                    }
+                    timer = 0;
                 }
+                timer++;
             }
     }
 

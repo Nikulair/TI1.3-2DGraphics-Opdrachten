@@ -24,7 +24,6 @@ public class Spirograph extends Application {
     private TextField v4;
     private Button reset;
     private Button draww;
-    private float colour = 0;
     private boolean translated = false;
 
     @Override
@@ -54,13 +53,16 @@ public class Spirograph extends Application {
 //        v2.textProperty().addListener(e -> draw(fxGraphics2D));
 //        v3.textProperty().addListener(e -> draw(fxGraphics2D));
 //        v4.textProperty().addListener(e -> draw(fxGraphics2D));
+
+        fxGraphics2D.setColor(Color.black);
+        fxGraphics2D.fillRect(-20000, -20000, 40000, 40000);
+
         reset.setOnAction(e -> {
-            fxGraphics2D.setColor(Color.WHITE);
+            fxGraphics2D.setColor(Color.black);
             fxGraphics2D.fillRect(-20000, -20000, 40000, 40000);
         });
         draww.setOnAction(e -> {
-            draw(fxGraphics2D, Color.getHSBColor(colour, 1f, 1f));
-            colour+=.2f;
+            draw(fxGraphics2D);
         });
 
 
@@ -71,7 +73,7 @@ public class Spirograph extends Application {
     }
 
 
-    public void draw(FXGraphics2D graphics, Color color) {
+    public void draw(FXGraphics2D graphics) {
         //you can use Double.parseDouble(v1.getText()) to get a double value from the first textfield
         //feel free to add more textfields or other controls if needed, but beware that swing components might clash in naming
         if (!translated) {
@@ -90,8 +92,9 @@ public class Spirograph extends Application {
         double x2 = (a * Math.cos(b * 0)) + (c * Math.cos(d * 0));
         double y2 = (a * Math.sin(b * 0)) + (c * Math.sin(d * 0));
 
-        for (double i = 0; i < Math.PI * 2; i += Math.PI / 2000) {
-            graphics.setColor(color);
+        graphics.setStroke(new BasicStroke(20));
+        graphics.setColor(Color.getHSBColor((float) Math.random(), 1f, 1f));
+        for (double i = 0; i < Math.PI * 2; i += Math.PI / 200) {
             double x21 = (a * Math.cos(b * i)) + (c * Math.cos(d * i));
             double y21 = (a * Math.sin(b * i)) + (c * Math.sin(d * i));
             x1 = x21;
@@ -99,7 +102,6 @@ public class Spirograph extends Application {
             graphics.draw(new Line2D.Double(x1, y1, x2, y2));
             x2 = x21;
             y2 = y21;
-
         }
 
     }
