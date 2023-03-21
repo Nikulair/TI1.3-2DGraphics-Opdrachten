@@ -21,11 +21,18 @@ import org.jfree.fx.ResizableCanvas;
 public class Screensaver extends Application {
     private ResizableCanvas canvas;
 
+    // changeable values
+    private final int pointsTotal = 400;           // --- changes the amount of lines ---
+    private final int movingPoints = 3;// <=20      // --- changes the amount of moving points to a max of 20 ---
+    private final float colourSpeed = 0.00013f;     // --- changes the speed of the colour ---
+    private final double speed = .6;               // --- changes the speed of the lines ---
 
-    private final int pointsTotal = 400;        // --- changes the amount of lines ---
-    private final int movingPoints = 5;// <20   // --- changes the amount of moving points to a max of 20 ---
-    private final float colourSpeed = 0.0003f;  // --- changes the speed of the colour ---
-    private final double speed = 1.5;           // --- changes the speed of the lines ---
+
+//    // random values
+//    private final int pointsTotal = (int) Math.ceil(Math.random() * 500);           // --- changes the amount of lines ---
+//    private final int movingPoints = (int) Math.ceil(Math.random() * 20);// <=20    // --- changes the amount of moving points to a max of 20 ---
+//    private final float colourSpeed = (float) Math.random();                        // --- changes the speed of the colour ---
+//    private final double speed = Math.random() * 6;                                 // --- changes the speed of the lines ---
 
 
     private final Point2D[][] points = new Point2D[pointsTotal][movingPoints];
@@ -85,8 +92,11 @@ public class Screensaver extends Application {
     public void init(ResizableCanvas canvas) {
         for (int i = 0; i < points.length; i++) {
             for (int j = 0; j < points[i].length; j++) {
-                points[i][j] = new Point2D.Double(Math.random() * canvas.getWidth(), Math.random() * canvas.getHeight());
+                points[i][j] = new Point2D.Double(0, 0);
             }
+        }
+        for (int i = 0; i < points[0].length; i++) {
+            points[0][i] = new Point2D.Double(Math.random() * canvas.getWidth(), Math.random() * canvas.getHeight());
         }
         for (int i = 0; i < colour.length; i++) {
 //            colour[i] = (float) Math.random();
@@ -118,7 +128,7 @@ public class Screensaver extends Application {
             }
             points[0][i] = new Point2D.Double(x + xAdder[i], y + yAdder[i]);
         }
-        if (lastColour > 1f){
+        if (lastColour > 1f) {
             lastColour = 0f;
         }
 //        colour[0] = (float) Math.random();
