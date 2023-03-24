@@ -12,7 +12,6 @@ import java.io.IOException;
  * Created by johan on 2017-03-08.
  */
 public class GameObject {
-
     private Body body;
     private BufferedImage image;
     private Vector2 offset;
@@ -43,5 +42,9 @@ public class GameObject {
         tx.translate(-image.getWidth() / 2, -image.getHeight() / 2);
         g2d.drawImage(image, tx, null);
 
+    }
+
+    public Body getBody() {
+        return body;
     }
 }

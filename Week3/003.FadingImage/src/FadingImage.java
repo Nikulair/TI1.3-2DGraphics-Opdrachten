@@ -64,13 +64,18 @@ public class FadingImage extends Application {
 
         graphics.drawImage(images[currentImage], tx, null);
 
-        graphics.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, blendingProcess));
-
-        if (currentImage == 0) {
-            graphics.drawImage(images[images.length - 1], tx, null);
+        if (blendingProcess < 0f) {
+            graphics.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
+            graphics.drawImage(images[currentImage], tx, null);
         } else {
-            graphics.drawImage(images[currentImage - 1], tx, null);
+            graphics.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, blendingProcess));
+            if (currentImage == 0) {
+                graphics.drawImage(images[images.length - 1], tx, null);
+            } else {
+                graphics.drawImage(images[currentImage - 1], tx, null);
+            }
         }
+
 
 
 
@@ -80,7 +85,7 @@ public class FadingImage extends Application {
 
     public void init() {
         try {
-            images = new BufferedImage[10];
+            images = new BufferedImage[9];
             for (int i = 0; i < images.length; i++) {
                 images[i] = ImageIO.read(getClass().getResource("/images/image" + i + ".jpg"));
             }
@@ -91,19 +96,15 @@ public class FadingImage extends Application {
     }
 
     public void update(double deltaTime) {
-            blendingProcess -= 0.006f;
-            if (blendingProcess <= 0f) {
-                blendingProcess = 0;
-                if (timer > 400) {
-                    blendingProcess = .8f;
-                    currentImage++;
-                    if (currentImage == images.length) {
-                        currentImage = 0;
-                    }
-                    timer = 0;
-                }
-                timer++;
+        blendingProcess -= 0.003f;
+        if (blendingProcess < -.3f) {
+            blendingProcess = 1f;
+            currentImage++;
+            if (currentImage == images.length) {
+                currentImage = 0;
             }
+            timer = 0;
+        }
     }
 
     public static void main(String[] args) {

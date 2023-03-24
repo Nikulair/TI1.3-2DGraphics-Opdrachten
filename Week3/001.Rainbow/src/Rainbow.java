@@ -46,8 +46,9 @@ public class Rainbow extends Application {
 
             double graden = -90 + (180 * (i / (str.length() - 1.0)));
 
+
             affineTransform.rotate(Math.toRadians(graden));
-            affineTransform.translate(-shape.getBounds().getWidth() / 2, -canvas.getHeight()/1.8);
+            affineTransform.translate(-shape.getBounds().getWidth() / 2, -220);
 
             graphics.setColor(Color.black);
             graphics.draw(affineTransform.createTransformedShape(shape));

@@ -51,7 +51,7 @@ public class GradientPaintExercise extends Application {
 //                (float) y,
                 (float) canvas.getWidth() / 2,
                 (float) canvas.getHeight() / 2,
-                250f,
+                200f,
 //                (float) canvas.getWidth() / 2,
 //                (float) canvas.getHeight() / 2,
                 (float) x,

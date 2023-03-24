@@ -22,16 +22,16 @@ public class Screensaver extends Application {
     private ResizableCanvas canvas;
 
     // changeable values
-    private final int pointsTotal = 400;           // --- changes the amount of lines ---
-    private final int movingPoints = 3;// <=20      // --- changes the amount of moving points to a max of 20 ---
-    private final float colourSpeed = 0.00013f;     // --- changes the speed of the colour ---
-    private final double speed = .6;               // --- changes the speed of the lines ---
+    private final int pointsTotal = 20;                 // --- changes the amount of lines ---
+    private final int movingPoints = 10;// <=20         // --- changes the amount of moving points to a max of 20 ---
+    private final float colourSpeed = 0.0003f;          // --- changes the speed of the colour ---
+    private final double speed = 2.6;                   // --- changes the speed of the lines ---
 
 
-//    // random values
-//    private final int pointsTotal = (int) Math.ceil(Math.random() * 500);           // --- changes the amount of lines ---
+//      // random values
+//    private final int pointsTotal = (int) Math.ceil(Math.random() * 1000);           // --- changes the amount of lines ---
 //    private final int movingPoints = (int) Math.ceil(Math.random() * 20);// <=20    // --- changes the amount of moving points to a max of 20 ---
-//    private final float colourSpeed = (float) Math.random();                        // --- changes the speed of the colour ---
+//    private final float colourSpeed = (float) Math.random() / 5;                        // --- changes the speed of the colour ---
 //    private final double speed = Math.random() * 6;                                 // --- changes the speed of the lines ---
 
 
@@ -66,6 +66,7 @@ public class Screensaver extends Application {
 
         stage.setScene(new Scene(mainPane));
         stage.setTitle("Screensaver");
+//        stage.setFullScreen(true);
         stage.show();
         draw(g2d);
     }
@@ -79,6 +80,7 @@ public class Screensaver extends Application {
         for (int i = points.length - 1; i >= 0; i--) {
             for (int j = 0; j < points[i].length; j++) {
                 graphics.setColor(Color.getHSBColor(colour[i], 1f, 1f));
+//                graphics.setStroke(new BasicStroke((float) (speed * 1.2), BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
                 if (j == points[i].length - 1) {
                     graphics.draw(new Line2D.Double(points[i][j], points[i][0]));
                     break;

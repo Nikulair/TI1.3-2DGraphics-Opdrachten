@@ -87,7 +87,7 @@ public class Spotlight extends Application {
     }
 
     public void init() {
-        for (int i = 0; i < 6000; i++) {
+        for (int i = 0; i < 600; i++) {
             line2DColorArrayList.add(Color.getHSBColor((float) Math.random(), 1f, .94f));
             if (i % 4 == 0) {
                 line2DArrayList.add(new Line2D.Double(0, Math.random() * canvasHeight, canvasWidth, Math.random() * canvasHeight));
